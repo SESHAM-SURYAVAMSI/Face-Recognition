@@ -4,7 +4,6 @@ import time
 # Load HAAR face classifier
 face_classifier = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-# Load functions
 def face_extractor(img):
 
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -13,13 +12,11 @@ def face_extractor(img):
     if faces == ():
         return None
 
-    # Crop all faces found
     for (x,y,w,h) in faces:
         cropped_face = img[y:y+h, x:x+w]
 
     return cropped_face
 
-# Initialize Webcam
 cap = cv2.VideoCapture(0)
 count = 0
 lst=[]
@@ -47,7 +44,7 @@ while True:
         pass
     cv2.imshow('img', img)
     k = cv2.waitKey(30) & 0xff
-    if k == 1:
+    if k == 13:
         # 13 is the Enter Key
         break
 
